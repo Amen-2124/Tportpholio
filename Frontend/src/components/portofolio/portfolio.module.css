@@ -1,0 +1,193 @@
+/* Main Portfolio Section Wrapper */
+.portfolioSection {
+  background-color: #111111;
+  min-height: 100vh;
+  padding: 80px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Header Container for Centering Title and Background Watermark */
+.headerContainer {
+  position: relative;
+  text-align: center;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Background Large Watermark Text (WORKS) */
+.watermarkText {
+  font-size: clamp(3rem, 9vw, 6rem); 
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.08);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  letter-spacing: 10px;
+  pointer-events: none;
+  white-space: nowrap;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Main Section Heading - "MY PORTFOLIO" */
+.mainTitle {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  line-height: 1;
+  color: #ffffff;
+}
+
+/* Accent Color Highlight */
+.highlightText {
+  color: #ffb400;
+}
+
+/* Responsive 3-Column Portfolio Grid */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1140px;
+  width: 100%;
+}
+
+/* Link Wrapper for Project Cards */
+.cardLink {
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Individual Project Card Container */
+.projectCard {
+  position: relative;
+  height: 220px;
+  background-color: #252525;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Image Styling */
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Custom Yellow Card for Slider/Special Projects */
+.yellowCard {
+  background-color: #ffb400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Hover Overlay Layer */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 180, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlayTitle {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Hover and Active Scale Effect */
+.cardLink:hover .projectCard {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.cardLink:hover .overlay {
+  opacity: 1;
+}
+
+.cardLink:active .projectCard {
+  transform: scale(0.98);
+}
+
+/* Professional Loading Spinner Styling */
+.spinnerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 15px;
+  color: #ffffff;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #ffb400;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Text Styling */
+.errorText {
+  color: #ff4d4d;
+  text-align: center;
+  padding: 100px 0;
+  font-size: 1.2rem;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}

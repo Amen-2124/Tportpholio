@@ -1,0 +1,14 @@
+Global Reset and Box Sizing
+* {
+  box-sizing: border-box;
+  margin: 0;
+  
+}
+
+/* Body Styling with Light Background */
+body {
+  background-color: #111111;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}

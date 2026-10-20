@@ -1,0 +1,97 @@
+.container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.highlight {
+  color:  #ffb400;
+}
+
+.heading {
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 20px;
+  column-gap: 40px;
+  margin-bottom: 50px;
+}
+
+.infoItem {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.label {
+  color: #777777;
+  font-size: 18px;
+  min-width: 110px;
+}
+
+.value {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.available {
+  color: #27ae60;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+/* My Skills Section Styles */
+.skillsSection {
+  margin-top: 40px;
+}
+
+.subHeading {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.skillCard {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 600;
+  color:#ffffff;
+  transition: 0.3s;
+}
+
+.skillCard:hover {
+  background: #ffb400;
+  color:#ffffff;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
