@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 const dbConfig = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'portfolio',
+  user: process.env.DB_USER || 'hanastxf_templete',
   password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'Tportfolio',
+  database: process.env.DB_NAME || 'hanastxf_21portfolio',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0

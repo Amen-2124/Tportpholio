@@ -1,7 +1,7 @@
 /**
  * Component Name: Contact
  * Description: Handles user contact form submissions with strict real-time input validations,
- *              character limitations, API integration via Axios, and displays professional
+ *              character limitations, live API integration via Axios, and displays professional
  *              social media profile links.
  * Author: Full-Stack Developer Portfolio
  */
@@ -113,8 +113,8 @@ const Contact = () => {
     setResponseMsg({ type: '', text: '' });
 
     try {
-      // Dispatch POST request to the backend contact API endpoint
-      const response = await axios.post('http://localhost:5000/api/contact', formData);
+      // Dispatch POST request to the live cPanel backend API endpoint
+      const response = await axios.post('https://api.hanastack.com/api/contact', formData);
 
       if (response.data.success) {
         setResponseMsg({
