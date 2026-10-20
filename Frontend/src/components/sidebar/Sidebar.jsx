@@ -6,6 +6,7 @@ function Sidebar({ activeSection, setActiveSection }) {
   return (
     <aside className={styles.sidebarContainer}>
       <ul>
+        {/* Home Section Button */}
         <li>
           <button
             className={`${styles.navBtn} ${activeSection === 'home' ? styles.active : ''}`}
@@ -15,6 +16,8 @@ function Sidebar({ activeSection, setActiveSection }) {
             <FaHome />
           </button>
         </li>
+
+        {/* About Section Button */}
         <li>
           <button
             className={`${styles.navBtn} ${activeSection === 'about' ? styles.active : ''}`}
@@ -24,6 +27,8 @@ function Sidebar({ activeSection, setActiveSection }) {
             <FaUser />
           </button>
         </li>
+
+        {/* Portfolio Section Button */}
         <li>
           <button
             className={`${styles.navBtn} ${activeSection === 'portfolio' ? styles.active : ''}`}
@@ -33,6 +38,8 @@ function Sidebar({ activeSection, setActiveSection }) {
             <FaBriefcase />
           </button>
         </li>
+
+        {/* Contact Section Button */}
         <li>
           <button
             className={`${styles.navBtn} ${activeSection === 'contact' ? styles.active : ''}`}
