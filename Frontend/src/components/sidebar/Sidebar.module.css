@@ -1,13 +1,18 @@
-/* Fixed Right Sidebar Icons Container */
+/* ==========================================
+   DESKTOP VIEW (Right Floating Sidebar)
+   ========================================== */
+
+/* Main Fixed Sidebar on Desktop Right */
 .sidebarContainer {
   position: fixed;
-  right: 30px;
+  right: 30px; /* Positioned on the right side for desktop */
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Sidebar List Styling */
+/* Sidebar List Item Container */
 .sidebarContainer ul {
   list-style: none;
   display: flex;
@@ -17,10 +22,10 @@
   padding: 0;
 }
 
-/* Sidebar Navigation Buttons */
+/* Navigation Round Buttons */
 .navBtn {
-  background: #f1f1f1;
-  color: #666666;
+  background: #252525;
+  color: #ffffff;
   border: none;
   width: 50px;
   height: 50px;
@@ -31,12 +36,173 @@
   justify-content: center;
   font-size: 18px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Hover and Active States for Sidebar Buttons */
+.icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Text labels are hidden on desktop floating buttons */
+.navLabel {
+  display: none;
+}
+
+/* Active and Hover Accent States */
 .navBtn:hover,
 .active {
   background-color: #ffb400 !important;
   color: #ffffff !important;
+}
+
+/* Hide toggle button and backdrop elements on Desktop view */
+.menuToggleBtn,
+.backdrop,
+.closeBtn {
+  display: none;
+}
+
+
+/* ==========================================
+   TABLET & MOBILE RESPONSIVE (Max Width: 992px)
+   ========================================== */
+@media screen and (max-width: 992px) {
+  
+  /* Top-Right Hamburger Toggle Button for Mobile */
+  .menuToggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 25px;
+    right: 25px; /* Positioned Top-Right */
+    left: auto;
+    width: 48px;
+    height: 48px;
+    background-color: #252525;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1030;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Semi-transparent dark overlay for background dimming */
+  .backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1040;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Half-Screen Side Drawer (Right Side Slide-in Menu) */
+  .sidebarContainer {
+    position: fixed;
+    top: 0;
+    right: 0; /* Positioned on the Right */
+    left: auto;
+    width: 75%; /* Covers ~75% of screen width */
+    max-width: 320px;
+    height: 100vh;
+    background-color: #181818;
+    transform: translateX(100%); /* Hidden off-screen to the right */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 70px 25px 30px 25px;
+    box-sizing: border-box;
+    z-index: 1050;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Applied when Mobile Menu is active */
+  .menuOpen {
+    transform: translateX(0);
+  }
+
+  /* Close Button (✕) on the Top-Right of the Right Drawer */
+  .closeBtn {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Positioned Top-Right inside drawer */
+    left: auto;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .closeBtn:hover {
+    color: #ffb400;
+  }
+
+  .sidebarContainer ul {
+    width: 100%;
+    gap: 0;
+  }
+
+  .sidebarContainer li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Full-width list item button inside mobile menu drawer */
+  .navBtn {
+    width: 100%;
+    height: auto;
+    padding: 16px 0;
+    background: transparent !important;
+    border-radius: 0;
+    box-shadow: none;
+    justify-content: flex-start;
+    gap: 15px;
+    color: #e0e0e0;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+  }
+
+  /* Display Text Labels next to Icons in Mobile View */
+  .navLabel {
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .icon {
+    font-size: 18px;
+  }
+
+  /* Highlight selected menu link */
+  .active {
+    color: #ffb400 !important;
+  }
+
+  .active .icon,
+  .active .navLabel {
+    color: #ffb400;
+  }
+}
+
+/* Keyframe animation for backdrop */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

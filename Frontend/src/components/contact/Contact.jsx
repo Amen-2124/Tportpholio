@@ -1,8 +1,7 @@
 /**
  * Component Name: Contact
- * Description: Handles user contact form submissions with strict real-time input validations,
- *              character limitations, live API integration via Axios, and displays professional
- *              social media profile links.
+ * Description: Fully responsive contact section featuring real-time input validations,
+ *              character limit tracking, mobile scroll fixes, and API post integration.
  * Author: Full-Stack Developer Portfolio
  */
 
@@ -20,7 +19,7 @@ import {
 import axios from 'axios';
 
 const Contact = () => {
-  // State management for form input values
+  // State management for form input fields
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,24 +27,24 @@ const Contact = () => {
     message: ''
   });
 
-  // UI state for loading indicators and status message alerts
+  // State management for API interaction states
   const [loading, setLoading] = useState(false);
   const [responseMsg, setResponseMsg] = useState({ type: '', text: '' });
 
   /**
-   * Handle real-time input changes and apply strict formatting or length restrictions
+   * Real-time input validation and character restricting handler
    */
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Restrict Name field to alphabetic characters and whitespace only
+    // Filter non-alphabetic characters in the name field
     if (name === 'name') {
       const alphaOnly = value.replace(/[^a-zA-Z\s]/g, '');
       setFormData((prev) => ({ ...prev, [name]: alphaOnly }));
       return;
     }
 
-    // Restrict Subject length to a maximum of 100 characters
+    // Limit subject length to 100 characters max
     if (name === 'subject') {
       if (value.length <= 100) {
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -53,7 +52,7 @@ const Contact = () => {
       return;
     }
 
-    // Restrict Message length to a maximum of 500 characters
+    // Limit message length to 500 characters max
     if (name === 'message') {
       if (value.length <= 500) {
         setFormData((prev) => ({ ...prev, [name]: value }));
@@ -61,17 +60,17 @@ const Contact = () => {
       return;
     }
 
-    // Default handler for standard inputs (e.g., email)
+    // Default change handler
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   /**
-   * Handle comprehensive client-side form validation and asynchronous submission via Axios
+   * Form submission and asynchronous dispatching via Axios
    */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 1. Full Name Validation: Require at least first and last name (min 2 chars each)
+    // 1. Full Name Validation (Requires First and Last name)
     const nameParts = formData.name.trim().split(/\s+/);
     if (nameParts.length < 2 || nameParts[0].length < 2 || nameParts[1].length < 2) {
       setResponseMsg({
@@ -81,30 +80,30 @@ const Contact = () => {
       return;
     }
 
-    // 2. Email Pattern Validation
+    // 2. Email Pattern Verification
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
       setResponseMsg({
         type: 'error',
-        text: 'Please enter a valid email address (e.g., name@example.com).'
+        text: 'Please enter a valid email address.'
       });
       return;
     }
 
-    // 3. Subject Length Validation: Require at least 4 characters
+    // 3. Subject Length Verification
     if (formData.subject.trim().length < 4) {
       setResponseMsg({
         type: 'error',
-        text: 'Subject is too short. Please provide a clear subject (at least 4 characters).'
+        text: 'Subject is too short. Minimum 4 characters required.'
       });
       return;
     }
 
-    // 4. Message Length Validation: Require at least 10 characters
+    // 4. Message Body Validation
     if (formData.message.trim().length < 10) {
       setResponseMsg({
         type: 'error',
-        text: 'Message is too short. Please provide at least 10 characters.'
+        text: 'Message is too short. Minimum 10 characters required.'
       });
       return;
     }
@@ -113,7 +112,7 @@ const Contact = () => {
     setResponseMsg({ type: '', text: '' });
 
     try {
-      // Dispatch POST request to the live cPanel backend API endpoint
+      // Send post request to API endpoint
       const response = await axios.post('https://api.hanastack.com/api/contact', formData);
 
       if (response.data.success) {
@@ -122,10 +121,9 @@ const Contact = () => {
           text: response.data.msg || 'Thank you! Your message has been sent successfully.'
         });
 
-        // Clear input form fields upon successful transmission
+        // Reset inputs on success
         setFormData({ name: '', email: '', subject: '', message: '' });
 
-        // Automatically clear success notification message after 4 seconds
         setTimeout(() => {
           setResponseMsg({ type: '', text: '' });
         }, 4000);
@@ -144,7 +142,7 @@ const Contact = () => {
 
   return (
     <section className={styles.contactSection} id="contact">
-      {/* Section Header */}
+      {/* Header Container */}
       <div className={styles.sectionHeader}>
         <h2 className={styles.bgTitle}>CONTACT</h2>
         <h2 className={styles.mainTitle}>
@@ -153,15 +151,14 @@ const Contact = () => {
       </div>
 
       <div className={styles.contactContainer}>
-        {/* Left Column: Direct Contact Details & Professional Social Profiles */}
+        {/* Left Info Column */}
         <div className={styles.contactInfo}>
-          <h3 className={styles.infoHeading}>LET'S CONNECT!</h3>
+          <h3 className={styles.infoHeading}>DON'T BE SHY !</h3>
           <p className={styles.infoText}>
-            Whether you have a new project in mind, a full-stack development role to discuss, 
-            or just want to connect—my inbox is always open. Let’s build something great together!
+            Feel free to get in touch with me. I am always open to discussing new
+            projects, creative ideas or opportunities to be part of your visions.
           </p>
 
-          {/* Email Direct Link Card */}
           <div className={styles.infoItem}>
             <a 
               href="https://mail.google.com/mail/?view=cm&fs=1&to=hanaasefa86@gmail.com" 
@@ -173,13 +170,12 @@ const Contact = () => {
                 <FaEnvelope />
               </div>
               <div>
-                <span className={styles.label}>EMAIL ME</span>
+                <span className={styles.label}>MAIL ME</span>
                 <span className={styles.value}>hanaasefa86@gmail.com</span>
               </div>
             </a>
           </div>
 
-          {/* Phone Direct Link Card */}
           <div className={styles.infoItem}>
             <a href="tel:+251923254240" className={styles.infoLink}>
               <div className={styles.iconBox}>
@@ -192,71 +188,38 @@ const Contact = () => {
             </a>
           </div>
 
-          {/* Social Media & Code Repository Profile Links */}
           <div className={styles.socialIcons}>
-            <a 
-              href="https://github.com/Hana-Asefa" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={styles.socialIcon} 
-              title="GitHub Profile"
-            >
+            <a href="https://github.com/Hana-Asefa" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} title="GitHub Profile">
               <FaGithub />
             </a>
-            <a 
-              href="https://www.linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={styles.socialIcon} 
-              title="LinkedIn Profile"
-            >
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} title="LinkedIn Profile">
               <FaLinkedin />
             </a>
-            <a 
-              href="https://t.me/Sylvain1921" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={styles.socialIcon} 
-              title="Telegram"
-            >
+            <a href="https://t.me/Sylvain1921" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} title="Telegram">
               <FaTelegramPlane />
             </a>
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={styles.socialIcon} 
-              title="Instagram"
-            >
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} title="Instagram">
               <FaInstagram />
             </a>
-            <a 
-              href="https://wa.me/251923254240" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={styles.socialIcon} 
-              title="WhatsApp"
-            >
+            <a href="https://wa.me/251923254240" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} title="WhatsApp">
               <FaWhatsapp />
             </a>
           </div>
         </div>
 
-        {/* Right Column: Interactive Contact Form */}
+        {/* Right Form Column */}
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          {/* Status Message Notification Feedback */}
           {responseMsg.text && (
             <div className={responseMsg.type === 'success' ? styles.successMessage : styles.errorMessage}>
               {responseMsg.text}
             </div>
           )}
 
-          {/* Form Top Row: User Inputs */}
           <div className={styles.formRow}>
             <input
               type="text"
               name="name"
-              placeholder="FULL NAME (FIRST & LAST)"
+              placeholder="YOUR NAME"
               value={formData.name}
               onChange={handleChange}
               maxLength={50}
@@ -275,7 +238,7 @@ const Contact = () => {
             <input
               type="text"
               name="subject"
-              placeholder="YOUR SUBJECT (MIN 4 CHARS)"
+              placeholder="YOUR SUBJECT"
               value={formData.subject}
               onChange={handleChange}
               maxLength={100}
@@ -284,12 +247,11 @@ const Contact = () => {
             />
           </div>
 
-          {/* Form Bottom Row: Message Textarea with Character Counter */}
           <div className={styles.formFullRow}>
             <textarea
               name="message"
               rows="6"
-              placeholder="YOUR MESSAGE (MAX 500 CHARACTERS)"
+              placeholder="YOUR MESSAGE"
               value={formData.message}
               onChange={handleChange}
               maxLength={500}
@@ -301,7 +263,6 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Form Submission Action Button */}
           <button type="submit" className={styles.submitBtn} disabled={loading}>
             <span>{loading ? 'SENDING...' : 'SEND MESSAGE'}</span>
             <div className={styles.btnIconBox}>

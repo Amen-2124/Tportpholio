@@ -2,15 +2,20 @@
    Contact Section Container
 ========================================== */
 .contactSection {
-  padding: 20px 8%;
+  padding: 50px 20px;
   background-color: #111111;
   color: #ffffff;
   position: relative;
-  overflow: hidden;
-  min-height: 90vh;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  /* Restrict max height to viewport and allow internal vertical scroll */
+  max-height: 100vh;
+  overflow-y: auto; 
+  -webkit-overflow-scrolling: touch; /* Smooth iOS touch scrolling */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* ==========================================
@@ -18,31 +23,37 @@
 ========================================== */
 .sectionHeader {
   text-align: center;
-  margin-bottom: 100px;
-  margin-top: 0;
+  margin-bottom: 60px;
+  margin-top: 20px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .bgTitle {
-  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-size: clamp(2.8rem, 10vw, 6rem);
   font-weight: 900;
   color: rgba(255, 255, 255, 0.07);
   position: absolute;
-  top: 0%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  letter-spacing: 10px;
+  letter-spacing: 6px;
+  /* CRITICAL: Prevents background text overlay from blocking touch scrolling */
   pointer-events: none;
+  touch-action: none;
   white-space: nowrap;
   line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
 }
 
 .mainTitle {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.8rem, 6vw, 3.2rem);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -53,21 +64,54 @@
 }
 
 .highlight {
-  color: #ffb400; /* Tunis Gold/Orange */
+  color: #ffb400; /* Tunis Gold Accent */
 }
 
 /* ==========================================
-   Main Contact Layout (Grid)
+   Main Contact Layout (Grid System)
 ========================================== */
 .contactContainer {
   display: grid;
   grid-template-columns: 1fr 1.8fr;
-  gap: 50px;
+  gap: 40px;
   align-items: start;
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 50px; /* Ensures bottom elements remain visible during scroll */
 }
+
+/* ==========================================
+   Left Side: Contact Details & Social Links
+========================================== */
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.infoHeading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.infoText {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #d1d1d1;
+  margin: 0;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .infoLink {
   display: flex;
   align-items: center;
@@ -79,44 +123,6 @@
 
 .infoLink:hover {
   opacity: 0.85;
-}
-
-@media (max-width: 968px) {
-  .contactContainer {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
-
-/* ==========================================
-   Left Side: Info & Social Links
-========================================== */
-.contactInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-.infoHeading {
-  font-size: 1.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-
-.infoText {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #d1d1d1;
-  margin: 0;
-}
-
-.infoItem {
-  display: flex;
-  align-items: center;
-  gap: 20px;
 }
 
 .iconBox {
@@ -134,7 +140,7 @@
 
 .label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #999999;
   font-weight: 600;
   letter-spacing: 1px;
@@ -143,16 +149,18 @@
 }
 
 .value {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #ffffff;
   font-weight: 700;
+  word-break: break-word;
 }
 
-/* Social Icons Container */
+/* Social Media Profile Links */
 .socialIcons {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .socialIcon {
@@ -164,7 +172,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -172,48 +180,45 @@
 .socialIcon:hover {
   background-color: #ffb400;
   color: #ffffff;
+  transform: translateY(-3px);
 }
 
 /* ==========================================
-   Right Side: Form & Layout Styling
+   Right Side: Contact Form Styling
 ========================================== */
 .contactForm {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
 }
 
-/* Input Fields Top Row Layout (Name, Email, Subject) */
 .formRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-@media (max-width: 768px) {
-  .formRow {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+  gap: 20px;
 }
 
 .formFullRow {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Rounded Input and Textarea Fields (Tunis Style) */
+/* Rounded Input and Textarea Styling */
 .inputField,
 .textareaField {
   width: 100%;
-  padding: 15px 25px;
+  padding: 16px 25px;
   background-color: #252525;
   border: 1px solid #252525;
-  border-radius: 30px; /* በፎቶው ላይ እንዳለው ሙሉ በሙሉ Rounded እንዲሆኑ */
+  border-radius: 30px;
   color: #ffffff;
   font-size: 0.9rem;
   outline: none;
   transition: all 0.3s ease;
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 .inputField::placeholder,
@@ -222,6 +227,7 @@
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .inputField:focus,
@@ -230,15 +236,21 @@
   background-color: #2b2b2b;
 }
 
-/* Textarea Rounded Box Style */
 .textareaField {
   resize: none;
-  min-height: 200px;
-  border-radius: 30px; /* Rounded box for Textarea */
+  min-height: 160px;
+  border-radius: 30px;
   padding: 20px 25px;
 }
 
-/* Submit Button Styling */
+.charCounter {
+  font-size: 0.8rem;
+  color: #888888;
+  text-align: right;
+  padding-right: 15px;
+}
+
+/* Submit Action Button */
 .submitBtn {
   display: inline-flex;
   align-items: center;
@@ -246,7 +258,7 @@
   background-color: transparent;
   border: 1px solid #ffb400;
   color: #ffffff;
-  padding: 6px 6px 6px 35px;
+  padding: 6px 6px 6px 30px;
   border-radius: 35px;
   font-weight: 700;
   font-size: 0.9rem;
@@ -255,6 +267,7 @@
   transition: all 0.3s ease;
   width: max-content;
   margin-top: 5px;
+  align-self: flex-start;
 }
 
 .submitBtn:hover:not(:disabled) {
@@ -267,16 +280,16 @@
 }
 
 .btnIconBox {
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   background-color: #ffb400;
   color: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 25px;
-  font-size: 1.2rem;
+  margin-left: 20px;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
 }
 
@@ -285,7 +298,7 @@
   color: #ffb400;
 }
 
-/* Response Messages */
+/* Response Message Banners */
 .successMessage {
   padding: 14px 20px;
   border-radius: 20px;
@@ -293,6 +306,7 @@
   color: #2ecc71;
   font-weight: 600;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .errorMessage {
@@ -302,4 +316,38 @@
   color: #ff5252;
   font-weight: 600;
   text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   Mobile Responsive Setup
+========================================== */
+@media (max-width: 968px) {
+  .contactSection {
+    padding: 30px 18px;
+    max-height: 100vh;
+    overflow-y: auto; /* Enables inner section scrolling exclusively on mobile */
+  }
+
+  .contactContainer {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+    padding: 6px 6px 6px 20px;
+  }
+
+  .btnIconBox {
+    margin-left: 15px;
+  }
 }

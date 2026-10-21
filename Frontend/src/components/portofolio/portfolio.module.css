@@ -1,36 +1,44 @@
-/* Main Portfolio Section Wrapper */
+/* ==========================================
+   PORTFOLIO SECTION - FULL RESPONSIVE & SCROLL FIX
+   ========================================== */
+
 .portfolioSection {
   background-color: #111111;
+  width: 100%;
   min-height: 100vh;
-  padding: 80px 8%;
+  height: auto !important; /* Forces the container to expand vertically with content */
+  padding: 60px 8% 140px 8%; /* Extra bottom padding so mobile browsers don't cut off content */
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  position: relative;
+  overflow: visible !important; /* Allows full page scrolling naturally */
 }
 
-/* Header Container for Centering Title and Background Watermark */
+/* Header Container */
 .headerContainer {
   position: relative;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  flex-shrink: 0;
 }
 
-/* Background Large Watermark Text (WORKS) */
+/* Watermark Text */
 .watermarkText {
-  font-size: clamp(3rem, 9vw, 6rem); 
+  font-size: clamp(2.5rem, 8vw, 6rem); 
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.06);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
-  letter-spacing: 10px;
+  letter-spacing: 6px;
   pointer-events: none;
   white-space: nowrap;
   line-height: 1;
@@ -38,9 +46,9 @@
   text-transform: uppercase;
 }
 
-/* Main Section Heading - "MY PORTFOLIO" */
+/* Main Heading */
 .mainTitle {
-  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-size: clamp(2rem, 5vw, 3.8rem);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -51,29 +59,30 @@
   color: #ffffff;
 }
 
-/* Accent Color Highlight */
 .highlightText {
   color: #ffb400;
 }
 
-/* Responsive 3-Column Portfolio Grid */
+/* Portfolio Grid Container */
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   max-width: 1140px;
   width: 100%;
+  height: auto !important;
+  overflow: visible !important;
+  padding-bottom: 60px; /* Safe area for scrolling space */
 }
 
-/* Link Wrapper for Project Cards */
 .cardLink {
   text-decoration: none;
   display: block;
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
 }
 
-/* Individual Project Card Container */
 .projectCard {
   position: relative;
   height: 220px;
@@ -84,7 +93,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Card Image Styling */
 .cardImage {
   width: 100%;
   height: 100%;
@@ -92,7 +100,6 @@
   display: block;
 }
 
-/* Custom Yellow Card for Slider/Special Projects */
 .yellowCard {
   background-color: #ffb400;
   display: flex;
@@ -105,9 +112,10 @@
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 1px;
+  text-align: center;
+  padding: 0 15px;
 }
 
-/* Hover Overlay Layer */
 .overlay {
   position: absolute;
   top: 0;
@@ -128,11 +136,12 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-align: center;
+  padding: 0 15px;
 }
 
-/* Hover and Active Scale Effect */
 .cardLink:hover .projectCard {
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
@@ -140,11 +149,7 @@
   opacity: 1;
 }
 
-.cardLink:active .projectCard {
-  transform: scale(0.98);
-}
-
-/* Professional Loading Spinner Styling */
+/* Loading Spinner & Error States */
 .spinnerContainer {
   display: flex;
   flex-direction: column;
@@ -154,7 +159,6 @@
   gap: 15px;
   color: #ffffff;
   font-size: 1rem;
-  letter-spacing: 1px;
 }
 
 .spinner {
@@ -171,7 +175,6 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Error Text Styling */
 .errorText {
   color: #ff4d4d;
   text-align: center;
@@ -179,15 +182,43 @@
   font-size: 1.2rem;
 }
 
-/* Responsive Media Queries */
-@media (max-width: 992px) {
+/* =================================================== */
+/* Responsive Media Queries                             */
+/* =================================================== */
+
+@media screen and (max-width: 1024px) {
+  .portfolioSection {
+    padding: 50px 4% 120px 4%;
+  }
+
   .gridContainer {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 768px) {
+  .portfolioSection {
+    padding: 40px 16px 160px 16px; /* High bottom padding to prevent mobile browser navigation bar collision */
+    height: auto !important;
+    min-height: 100vh;
+  }
+
+  .headerContainer {
+    margin-bottom: 35px;
+  }
+
   .gridContainer {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .projectCard {
+    height: 200px;
+  }
+
+  .watermarkText {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
   }
 }
