@@ -84,20 +84,8 @@ export const addProjects = async (req, res, next) => {
         project_github_link: 'https://github.com/Amen-2124/ChatGPT_clone.git',
         project_live_demo: 'https://frabjous-dragon-d505ff.netlify.app'
       },
-      {
-        project_title: 'Apple Page',
-        project_description: 'A dynamic Apple product showcase web application featuring embedded Apple video assets, React Functional Components, custom CSS Modules, and an Express.js with MySQL backend.',
-        project_image_url: 'https://i.ibb.co/Wv4K6YCJ/react-apple.png',
-        project_github_link: 'https://github.com/Amen-2124/apple-replica',
-        project_live_demo: 'https://apple-react-functional-components-git-main-et-4fd7.vercel.app'
-      },
-      {
-        project_title: 'Apple Page (Bootstrap)',
-        project_description: 'A sleek, dynamic Apple product showcase page developed using Bootstrap framework for modern, responsive component layouts and styling.',
-        project_image_url: 'https://i.ibb.co/TqtkqR2k/Screenshot-2026-10-18-172235.png',
-        project_github_link: 'https://github.com/Amen-2124/apple-bootstrap-project2.git',
-        project_live_demo: 'https://apple-bootstrap-project2-u7p1.vercel.app'
-      },
+     
+     
       {
         project_title: 'AI-form',
         project_description: 'A major collaborative full-stack AI project built using Retrieval-Augmented Generation (RAG) architecture, enabling dynamic document processing, semantic search, and intelligent form handling.',

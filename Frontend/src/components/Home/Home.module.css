@@ -144,7 +144,7 @@
 .heroTitle {
   font-size: 44px;
   font-weight: 800;
-  line-height: 1.25;
+  /* line-height: 1.25; */
   color: #ffb400;
   margin-bottom: 20px;
   text-transform: uppercase;

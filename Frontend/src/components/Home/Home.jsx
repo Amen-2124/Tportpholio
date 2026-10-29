@@ -29,8 +29,9 @@ function Home({ setActiveSection, activeSection }) {
         <div className={styles.heroTextBox}>
           <h1 className={styles.heroTitle}>
             I'M HANA ASEFA.
-            <span className={styles.roleSubtitle}>FULL STACK DEVELOPER</span>
-          </h1>
+            </h1>
+            <h1 className={styles.roleSubtitle}>FULL STACK DEVELOPER</h1>
+          
           
           <p>
             I build clean, intuitive, and responsive web applications
