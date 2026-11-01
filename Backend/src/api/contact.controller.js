@@ -75,7 +75,7 @@ export const addProjects = async (req, res, next) => {
         project_description: 'A responsive streaming site clone utilizing TMDB API, React Swiper, and CSS modules.',
         project_image_url: 'https://i.ibb.co/chBppNWB/netflix.png',
         project_github_link: 'https://github.com/Amen-2124/netflix-clone-frontend.git',
-        project_live_demo: 'https://shimmering-khapse-637a88.netlify.app'
+        project_live_demo: 'https://admirable-blancmange-fd2ea9.netlify.app/'
       },
       {
         project_title: 'ChatGPT Clone',

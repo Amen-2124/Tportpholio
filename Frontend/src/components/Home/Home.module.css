@@ -53,9 +53,9 @@
 .heroContainer {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 100px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
